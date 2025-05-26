@@ -33,6 +33,9 @@ int main(int argc, char **argv) {
   } else if ( strcmp( configuration.command, "dimension" ) == 0 ) {
     /* helloworld() function is defined in feature.h and implemented in feature.c */
     dimension(configuration.filenames[0]);
+  } else if ( strncmp( configuration.command, "first_pixel", 11 ) == 0 ) {
+    /* first_pixel() function is defined in feature.h and implemented in feature.c */
+    first_pixel(configuration.filenames[0]);
   }
 
 
@@ -48,3 +51,4 @@ int main(int argc, char **argv) {
   
   return 0;
 }
+
