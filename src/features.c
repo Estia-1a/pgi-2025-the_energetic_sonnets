@@ -25,3 +25,16 @@ void dimension(char* filename) {
     printf("Dimensions: %d %d\n", width, height);
     free_image_data(data);
 }
+
+void first_pixel (char *filename){
+    unsigned char* data;
+    int width, height, channel_count;
+    if (read_image_data(filename, &data, &width, &height, &channel_count) == 0) {
+        printf("Erreur avec le fichier: %s\n", filename);
+        return;
+    }
+    int r=data[0];
+    int g=data[1];
+    int b=data[2];
+    printf("Couleur du premier pixel: %d, %d, %d\n ",r,g,b);
+}
