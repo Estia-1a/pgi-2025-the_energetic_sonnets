@@ -25,3 +25,19 @@ void dimension(char* filename) {
     printf("Dimensions: %d %d\n", width, height);
     free_image_data(data);
 }
+
+
+
+void first_pixel(char *source_path) {
+    unsigned char *data = NULL;
+    int width, height, channels;
+
+
+    int r = data[0];
+    int g = data[1];
+    int b = data[2];
+
+    printf("first_pixel: %d, %d, %d\n", r, g, b);
+
+    return;
+}
