@@ -9,6 +9,11 @@ void dimension(char* filename);
 void first_pixel (char *source_path);
 
 void tenth_pixel (char *source_path);
-
-void max_pixel(char *source_path);
 #endif
+
+void color_desaturate(char *source_path);
+
+void read_image_data(char *filename, unsigned char **data, int *width, int *height, int *channel_count);
+
+void write_image_data(char *filename, unsigned char *data, int width, int height);
+ 

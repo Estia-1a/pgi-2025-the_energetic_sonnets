@@ -46,4 +46,8 @@ int main(int argc, char **argv) {
   return 0;
 }
 
-
+int main() {
+  char*filename = "image_in.bmp";
+  color_desaturate(filename);
+  return 0;
+}
