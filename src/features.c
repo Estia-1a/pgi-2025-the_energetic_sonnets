@@ -260,3 +260,48 @@ void max_pixel(char*source_path){
     printf("max_pixel (%d,%d):%d, %d\n",max_x,max_y,max_R,max_G,max_B);
     free_image_data(data);
 }
+void min_compenent(char *source_path, char component){
+    int width, height, nbChannels;
+    unsigned char *data;
+
+    read_image_data(source_path, &data, &width, &height, &nbChannels);
+    if(data == NULL){
+        printf("erreur lors de la lecture du fichier: %s\n",source_path);
+        return;
+    }
+    int min_component_value=255;
+    int max_x=0;
+    int max_y=0;
+    int y, x;
+    
+    for(y=0; y < height; y++){
+        for(x=0; x < width; x++){
+            int pixel_index=(y*width+x)*nbChannels;
+            int R=data[pixel_index];
+            int G=data[pixel_index+1];
+            int B=data[pixel_index+2];
+            int component_value;
+            
+            if(component=='R'|| component=='r'){
+                component_value= R;
+            }else if(component=='G'|| component=='g'){
+                component_value= G;       
+            }else if(component=='B'|| component=='b'){
+                component_value= B;
+            }else{
+                printf("option de composante invlide.\n");
+                free_image_data(data);
+                return;
+            
+            }
+            if(component_value < min_component_value){
+                min_component_value=component_value;
+                max_x=x;
+                max_y=y;
+            }
+       }
+    }
+
+    printf("max_component %c (%d, %d):%d\n",component, max_x,max_y,min_component_value);
+    free_image_data(data);
+}
