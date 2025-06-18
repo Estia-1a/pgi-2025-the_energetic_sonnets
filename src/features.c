@@ -38,16 +38,3 @@ void first_pixel (char *filename){
     int b=data[2];
     printf("firt_pixel: %d, %d, %d\n ",r,g,b);
 }
-
-void tenth_pixel (char *filename){
-    unsigned char* data;
-    int width, height, channel_count;
-    if (read_image_data(filename, &data, &width, &height, &channel_count) == 0) {
-        printf("Erreur avec le fichier: %s\n", filename);
-        return;
-    }
-    int r=data[27];
-    int g=data[28];
-    int b=data[29];
-    printf("tenth_pixel: %d, %d, %d\n ",r,g,b);
-}
