@@ -74,7 +74,9 @@ int main(int argc, char **argv) {
             printf("Erreur: Composante manquante (R, G, ou B).\n");
             return 1;
         }
-    }    
+    }   
+    else if (strncmp(configuration.command, "min_pixel", 9) == 0) 
+    min_pixel(configuration.filenames[0]);
   return 0;
 
   

@@ -305,3 +305,34 @@ void min_compenent(char *source_path, char component){
     printf("max_component %c (%d, %d):%d\n",component, max_x,max_y,min_component_value);
     free_image_data(data);
 }
+void min_pixel(char*source_path){
+    int width, height, nbChannels;
+    unsigned char*data;
+    read_image_data(source_path, &data, &width, &height, &nbChannels);
+    int min_sum=765;
+    int min_x=0;
+    int min_y=0;
+    int y;
+    int x;
+    for (y=0;y<height; y++){
+        for (x=0;x<width;x++){
+            int max_pixel_index=(y*width +x)*nbChannels;
+            int max_R= data[max_pixel_index];
+            int max_G=data[max_pixel_index+1];
+            int max_B=data[max_pixel_index+2];
+            int SUM=max_R+max_G+max_B;
+            if (SUM<min_sum){
+                min_sum=SUM;
+                min_x=x;
+                min_y=y;
+            }
+
+        }
+    }
+    int min_pixel_index=(min_y*width+min_x)*nbChannels;
+    int min_R=data[min_pixel_index];
+    int min_G=data[min_pixel_index+1];
+    int min_B=data[min_pixel_index+2];
+
+    printf("min_pixel(%d, %d): %d, %d, %d", min_x, min_y, min_R, min_G, min_B);
+}
