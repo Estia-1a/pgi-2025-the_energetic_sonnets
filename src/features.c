@@ -36,5 +36,54 @@ void first_pixel (char *filename){
     int r=data[0];
     int g=data[1];
     int b=data[2];
-    printf("Couleur du premier pixel: %d, %d, %d\n ",r,g,b);
+    printf("firt_pixel: %d, %d, %d\n ",r,g,b);
+}
+
+void tenth_pixel (char *filename){
+    unsigned char* data;
+    int width, height, channel_count;
+    if (read_image_data(filename, &data, &width, &height, &channel_count) == 0) {
+        printf("Erreur avec le fichier: %s\n", filename);
+        return;
+    }
+    int r=data[27];
+    int g=data[28];
+    int b=data[29];
+    printf("tenth_pixel: %d, %d, %d\n ",r,g,b);
+}
+
+void color_desaturate(char *source_path) {
+    int width, height, channel_count;
+    unsigned char *data;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+    unsigned char *new_data = (unsigned char *)malloc(width * height * channel_count * sizeof(unsigned char));
+    if (new_data == NULL) {
+        printf("Allocation à la mémoire échoué.\n");
+        return;
+    }
+    int i = 0;
+    while (i < width * height) {
+        pixelRGB *pixel = (pixelRGB *)(data + i * channel_count);
+        unsigned char min_value = pixel->R;
+        if (pixel->G < min_value) {
+            min_value = pixel->G;
+        }
+        if (pixel->B < min_value) {
+            min_value = pixel->B;
+        }
+        unsigned char max_value = pixel->R;
+        if (pixel->G > max_value) {
+            max_value = pixel->G;
+        }
+        if (pixel->B > max_value) {
+            max_value = pixel->B;
+        }
+        unsigned char new_value = (min_value + max_value) / 2;
+        new_data[i * channel_count] = new_value;
+        new_data[i * channel_count + 1] = new_value;
+        new_data[i * channel_count + 2] = new_value;
+        i++;
+    }
+    write_image_data("image_out.bmp", new_data, width, height);
+    
 }
