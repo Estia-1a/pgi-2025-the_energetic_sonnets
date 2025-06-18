@@ -56,6 +56,10 @@ int main(int argc, char **argv) {
         /* max_component() function is defined in features.h and implemented in features.c */
         if (argc < 4) {
             printf("Erreur: Composante manquante (R, G, ou B).\n");
-        }
+   }
+    else if (strncmp(configuration.command, "max_pixel", 9) == 0) {
+        /* max_pixel() function is defined in features.h and implemented in features.c */
+        max_pixel(configuration.filenames[0]);
+    }
   return 0;
 }

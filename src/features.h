@@ -18,6 +18,7 @@ void color_gray_luminance(char* source_path);
 
 
 void color_green(char* source_path);
+void max_pixel(char* source_path);
 
 
 
