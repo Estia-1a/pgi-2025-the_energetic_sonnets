@@ -4,12 +4,6 @@
 #include "features.h"
 #include "utils.h"
 
-/**
- * @brief Here, you have to code features of the project.
- * Do not forget to commit regurlarly your changes.
- * Your commit messages must contain "#n" with: n = number of the corresponding feature issue.
- * When the feature is totally implemented, your commit message must contain "close #n".
- */
 
 void helloWorld() {
     printf("Hello World !");
@@ -56,3 +50,88 @@ void tenth_pixel (char *filename){
     int b=data[29];
     printf("tenth_pixel: %d, %d, %d\n ",r,g,b);
 }
+
+
+
+
+
+
+
+
+void color_desaturate(char *source_path) {
+    int width, height, channel_count;
+    unsigned char *data;
+
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+    unsigned char *new_data = (unsigned char *)malloc(width * height * channel_count * sizeof(unsigned char));
+    if (new_data == NULL) {
+        printf("Allocation à la mémoire échoué.\n");
+        return;
+    }
+    int i = 0;
+    while (i < width * height) {
+        
+        unsigned char r= data[i*channel_count];
+        unsigned char g= data[i*channel_count+1];
+        unsigned char b= data[i*channel_count+2];
+
+    
+        unsigned char min_value = r;
+        if (g < min_value)min_value=r;
+        if (b < min_value)min_value=b;
+        
+        unsigned char max_value = r;
+        if (g > max_value)max_value=g;
+        if (b > max_value)max_value=b;
+
+
+        unsigned char new_value = (min_value + max_value) / 2;
+        new_data[i * channel_count] = new_value;
+        new_data[i * channel_count + 1] = new_value;
+        new_data[i * channel_count + 2] = new_value;
+        i++;
+    }
+    write_image_data("image_out.bmp", new_data, width, height);
+    
+}
+
+
+void color_gray_luminance(char*source_path) {
+    int width, height, nbChannels;
+    unsigned char*data;
+
+    read_image_data(source_path, &data, &width, &height, &nbChannels);
+
+    for (int y=0; y<height; y++) {
+        for (int x = 0; x < width; x++) {
+            unsigned char red   = data[y * width * 3 + x * 3];
+            unsigned char green = data[y * width * 3 + x * 3 + 1];
+            unsigned char blue  = data[y * width * 3 + x * 3 + 2];
+            unsigned char gray  = (unsigned char)(0.21 * red + 0.72 * green + 0.07 * blue);
+
+            data[y * width * 3 + x * 3]     = gray;
+            data[y * width * 3 + x * 3 + 1] = gray;
+            data[y * width * 3 + x * 3 + 2] = gray;
+        }
+    }
+
+    write_image_data("image_out.bmp", data, width, height);
+
+    free(data);
+}
+
+void color_green(char*source_path){
+    int width, height, nbChannels;
+    unsigned char *data;
+    read_image_data(source_path, &data, &width, &height, &nbChannels);
+    int y;
+    int x;
+    for(y=0; y<height; y++){
+        for (x=0; x<width; x++){
+            data[y*width*3+x*3] = 0;
+            data[y*width*3 + x*3+2] =0;
+        }
+    }
+    write_image_data("image_out.bmp", data, width, height);
+}
+

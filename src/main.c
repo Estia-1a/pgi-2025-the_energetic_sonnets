@@ -22,12 +22,6 @@ int main(int argc, char **argv) {
   parse_arguments( argc, argv, &configuration ) ;
   check_debug_mode(configuration);
   check_file();
-  /* END */
-
-  /* Use "if ( strncmp( command, <commandname>, 9 ) == 0 )" to check if your <commandname> is called by program.*/
-  /* Example with helloworld command
-   * If helloworld is a called command: freud.exe -f images/input/image.jpeg -c helloworld 
-   */
   if ( strncmp( configuration.command, "helloworld", 10 ) == 0 ) {
     /* helloworld() function is defined in feature.h and implemented in feature.c */
     helloWorld();
@@ -46,6 +40,21 @@ int main(int argc, char **argv) {
   } else if ( strncmp( configuration.command, "color_gray_luminance", 20 ) == 0 ) {
     /* first_pixel() function is defined in feature.h and implemented in feature.c */
     color_gray_luminance(configuration.filenames[0]);
+  } else if ( strncmp( configuration.command, "color_desaturate", 16 ) == 0 ) {
+    /* first_pixel() function is defined in feature.h and implemented in feature.c */
+    color_desaturate(configuration.filenames[0]);
+  } else if ( strncmp( configuration.command, "color_green", 11 ) == 0 ) {
+    /* first_pixel() function is defined in feature.h and implemented in feature.c */
+    color_green(configuration.filenames[0]);  
+  
+  
+  
+  
+
+
+
+
+
+
   return 0;
 }
-
