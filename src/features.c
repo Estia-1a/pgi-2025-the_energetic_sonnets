@@ -112,3 +112,19 @@ void color_gray_luminance(char*source_path) {
 
     free(data);
 }
+
+void color_green(char*source_path){
+    int width, height, nbChannels;
+    unisgned char *data;
+    read_image_data(source_path, &data, &width, &height, &nbChannels);
+    int y;
+    int x;
+    for(y=0; y<height; y++){
+        for (x=0; x<width; x++){
+            data[y*width*3+x*3] = 0;
+            data[y*width*3 + x*3+2] =0;
+        }
+    }
+    write_image_data("image_out.bmp", data, width, height);
+}
+
