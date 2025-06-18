@@ -9,7 +9,6 @@ void dimension(char* filename);
 void first_pixel (char *source_path);
 
 void tenth_pixel (char *source_path);
-#endif
 
 void color_desaturate(char *source_path);
 
@@ -17,3 +16,4 @@ void read_image_data(char *filename, unsigned char **data, int *width, int *heig
 
 void write_image_data(char *filename, unsigned char *data, int width, int height);
  
+#endif
