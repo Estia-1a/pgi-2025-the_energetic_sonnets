@@ -40,7 +40,12 @@ int main(int argc, char **argv) {
   } else if ( strncmp( configuration.command, "max_component", 13 ) == 0 ) {
     /* first_pixel() function is defined in feature.h and implemented in feature.c */
     max_component(configuration.filenames[0],'R');
+  } else if ( strncmp( configuration.command, "color_desaturate", 16 ) == 0 ) {
+    /* first_pixel() function is defined in feature.h and implemented in feature.c */
+    color_desaturate(configuration.filenames[0]);
+  } else if ( strncmp( configuration.command, "color_gray_luminance", 20 ) == 0 ) {
+    /* first_pixel() function is defined in feature.h and implemented in feature.c */
+    color_gray_luminance(configuration.filenames[0]);
   return 0;
 }
-
 
