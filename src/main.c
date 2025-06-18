@@ -48,3 +48,9 @@ int main() {
   color_desaturate(filename);
   return 0;
 }
+
+int main() {
+    char* source_image = "image_in.bmp";
+    color_gray_luminance(source_image);
+    return 0;
+}
