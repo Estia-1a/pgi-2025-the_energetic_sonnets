@@ -135,3 +135,44 @@ void color_green(char*source_path){
     write_image_data("image_out.bmp", data, width, height);
 }
 
+
+
+void color_invert(char*source_path){
+    int width, height, nbChannels;
+    unisgned char *data;
+    read_image_data(source_path, &data, &width, &height, &nbChannels);
+
+    for (int y=0; y<height; y++) {
+        for (int x=0) {
+            unsigned char red  =data[y*width*3+x*3];
+            unsigned char green =data[y*width*3 +x*3+1];
+            unsigned char blue = data[y *width*3 +x*3+ 2];
+
+            data[y * width * 3 + x * 3]     = 255 - red;
+            data[y * width * 3 + x * 3 + 1] = 255 - green;
+            data[y * width * 3 + x * 3 + 2] = 255 - blue;
+        }
+    }
+
+    write_image_data("image_out.bmp", data, width, height);
+    free(data);
+
+}
+
+
+void color_red(char*source_path) {
+    int width, height, nbChannels;
+    unsigned char*data;
+    read_image_data(source_path, &data, &width, &height, &nbChannels);
+    int y;
+    int x;
+    for(y=0; y<height; y++){
+        for (x=0; x<width; x++) {
+            data[y*width*3+x*3+1]=0;
+            data[y*wdth*3+x*3+2]=0;
+        }
+    }
+
+    write_image_data("image_out.bmp", data, width, height);
+
+}
