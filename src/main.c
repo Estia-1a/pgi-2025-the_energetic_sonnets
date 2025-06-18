@@ -37,26 +37,28 @@ int main(int argc, char **argv) {
   } else if ( strncmp( configuration.command, "first_pixel", 11 ) == 0 ) {
     /* first_pixel() function is defined in feature.h and implemented in feature.c */
     first_pixel(configuration.filenames[0]);
+  } else if ( strncmp( configuration.command, "color_desaturate", 16 ) == 0 ) {
+    /* first_pixel() function is defined in feature.h and implemented in feature.c */
+    color_desaturate(configuration.filenames[0]);
+  } else if ( strncmp( configuration.command, "color_gray_luminance", 20 ) == 0 ) {
+    /* first_pixel() function is defined in feature.h and implemented in feature.c */
+    color_gray_luminance(configuration.filenames[0]);
   
+  } else if ( strncmp( configuration.command, "color_green", 11 ) == 0 ) {
+    /* first_pixel() function is defined in feature.h and implemented in feature.c */
+    color_green(configuration.filenames[0]);
+
+   } else if ( strncmp( configuration.command, "color_invert", 12 ) == 0 ) {
+    /* first_pixel() function is defined in feature.h and implemented in feature.c */
+    color_invert(configuration.filenames[0]);
+   }
 
 
   return 0;
 }
 
-int main() {
-  char*filename = "image_in.bmp";
-  color_desaturate(filename);
-  return 0;
-}
 
-int main() {
-    char* source_image = "image_in.bmp";
-    color_gray_luminance(source_image);
-    return 0;
-}
 
-int main(){
-  char*source_image = "image_in.bmp";
-  color_green(source_image);
-  return 0;
-}
+
+
+
