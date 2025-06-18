@@ -37,9 +37,9 @@ int main(int argc, char **argv) {
   } else if ( strncmp( configuration.command, "first_pixel", 11 ) == 0 ) {
     /* first_pixel() function is defined in feature.h and implemented in feature.c */
     first_pixel(configuration.filenames[0]);
-  
-
-
+  } else if ( strncmp( configuration.command, "max_component", 13 ) == 0 ) {
+    /* first_pixel() function is defined in feature.h and implemented in feature.c */
+    max_component(configuration.filenames[0],'R');
   return 0;
 }
 
