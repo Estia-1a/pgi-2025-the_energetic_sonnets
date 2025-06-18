@@ -52,11 +52,10 @@ int main(int argc, char **argv) {
     color_red(configuration.filenames[0]);
    }
 
+    else if (strncmp(configuration.command, "max_component", 13) == 0) {
+        /* max_component() function is defined in features.h and implemented in features.c */
+        if (argc < 4) {
+            printf("Erreur: Composante manquante (R, G, ou B).\n");
+        }
   return 0;
 }
-
-
-
-
-
-

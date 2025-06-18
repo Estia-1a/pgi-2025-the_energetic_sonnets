@@ -139,20 +139,20 @@ void color_green(char*source_path){
 
 void color_invert(char*source_path){
     int width, height, nbChannels;
-    unisgned char *data;
+    unsigned char *data;
     read_image_data(source_path, &data, &width, &height, &nbChannels);
+    if(data == NULL)return;
 
-    for (int y=0; y<height; y++) {
-        for (int x=0) {
-            unsigned char red  =data[y*width*3+x*3];
-            unsigned char green =data[y*width*3 +x*3+1];
-            unsigned char blue = data[y *width*3 +x*3+ 2];
+    int total_pixels = width*height;
+    for(int i=0;i<total_pixels;i++){
+        int index=i *nbChannels;
+    
 
-            data[y * width * 3 + x * 3]     = 255 - red;
-            data[y * width * 3 + x * 3 + 1] = 255 - green;
-            data[y * width * 3 + x * 3 + 2] = 255 - blue;
-        }
+            data[index]= 255-data[index];
+            data[index+1]= 255-data[index+1];
+             data[index+2]= 255-data[index+2];
     }
+    
 
     write_image_data("image_out.bmp", data, width, height);
     free(data);
@@ -169,10 +169,56 @@ void color_red(char*source_path) {
     for(y=0; y<height; y++){
         for (x=0; x<width; x++) {
             data[y*width*3+x*3+1]=0;
-            data[y*wdth*3+x*3+2]=0;
+            data[y*width*3+x*3+2]=0;
         }
     }
 
     write_image_data("image_out.bmp", data, width, height);
 
+}
+
+void max_compenent(char *source_path, char component){
+    int width, height, nbChannels;
+    unsigned char *data;
+
+    read_image_data(source_path, &data, &width, &height, &nbChannels);
+    if(data == NULL){
+        printf("erreur lors de la lecture du fichier: %s\n",source_path);
+        return;
+    }
+    int max_component_value=0;
+    int max_x=0;
+    int max_y=0;
+    int y, x;
+    
+    for(y=0; y < height; y++){
+        for(x=0; x < width; x++){
+            int pixel_index=(y*width+x)*nbChannels;
+            int R=data[pixel_index];
+            int G=data[pixel_index+1];
+            int B=data[pixel_index+2];
+            int component_value;
+            
+            if(component=='R'|| component=='r'){
+                component_value= R;
+            }else if(component=='G'|| component=='g'){
+                component_value= G;       
+            }else if(component=='B'|| component=='b'){
+                component_value= B;
+            }else{
+                printf("option de composante invlide.\n");
+                free_image_data(data);
+                return;
+            
+            }
+            if(component_value > max_component_value){
+                max_component_value=component_value;
+                max_x=x;
+                max_y=y;
+            }
+       }
+    }
+
+    printf("max_component %c (%d, %d):%d\n",component, max_x,max_y,max_component_value);
+    free_image_data(data);
 }
