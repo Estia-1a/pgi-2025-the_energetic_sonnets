@@ -1,0 +1,54 @@
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c: In function ‘color_desaturate’:
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:66:48: warning: implicit declaration of function ‘malloc’ [-Wimplicit-function-declaration]
+   66 |     unsigned char *new_data = (unsigned char *)malloc(width * height * channel_count * sizeof(unsigned char));
+      |                                                ^~~~~~
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:6:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+    5 | #include "utils.h"
+  +++ |+#include <stdlib.h>
+    6 | 
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:66:48: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+   66 |     unsigned char *new_data = (unsigned char *)malloc(width * height * channel_count * sizeof(unsigned char));
+      |                                                ^~~~~~
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:66:48: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c: In function ‘color_gray_luminance’:
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:120:5: warning: implicit declaration of function ‘free’ [-Wimplicit-function-declaration]
+  120 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:120:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:120:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:120:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c: In function ‘color_invert’:
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:142:5: error: ‘unisgned’ undeclared (first use in this function)
+  142 |     unisgned char *data;
+      |     ^~~~~~~~
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:142:5: note: each undeclared identifier is reported only once for each function it appears in
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:142:13: error: expected ‘;’ before ‘char’
+  142 |     unisgned char *data;
+      |             ^~~~~
+      |             ;
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:143:35: error: ‘data’ undeclared (first use in this function)
+  143 |     read_image_data(source_path, &data, &width, &height, &nbChannels);
+      |                                   ^~~~
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:146:21: error: expected ‘,’ or ‘;’ before ‘)’ token
+  146 |         for (int x=0) {
+      |                     ^
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:155:5: error: expected expression before ‘}’ token
+  155 |     }
+      |     ^
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:155:5: error: expected expression before ‘}’ token
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:155:5: error: expected expression before ‘}’ token
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:158:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  158 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:158:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c: In function ‘color_red’:
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:172:20: error: ‘wdth’ undeclared (first use in this function); did you mean ‘width’?
+  172 |             data[y*wdth*3+x*3+2]=0;
+      |                    ^~~~
+      |                    width
+gmake[2]: *** [CMakeFiles/freud.dir/build.make:93: CMakeFiles/freud.dir/src/features.c.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[1]: *** [CMakeFiles/Makefile2:87: CMakeFiles/freud.dir/all] Error 2
+gmake: *** [Makefile:136: all] Error 2
+
+The process '/usr/local/bin/cmake' failed with exit code 2
