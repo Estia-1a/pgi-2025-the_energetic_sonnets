@@ -1,0 +1,38 @@
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/main.c: In function ‘main’:
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/main.c:83:1: error: expected declaration or statement at end of input
+   83 | }
+      | ^
+gmake[2]: *** [CMakeFiles/freud.dir/build.make:107: CMakeFiles/freud.dir/src/main.c.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c: In function ‘color_desaturate’:
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:66:48: warning: implicit declaration of function ‘malloc’ [-Wimplicit-function-declaration]
+   66 |     unsigned char *new_data = (unsigned char *)malloc(width * height * channel_count * sizeof(unsigned char));
+      |                                                ^~~~~~
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:6:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+    5 | #include "utils.h"
+  +++ |+#include <stdlib.h>
+    6 | 
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:66:48: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+   66 |     unsigned char *new_data = (unsigned char *)malloc(width * height * channel_count * sizeof(unsigned char));
+      |                                                ^~~~~~
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:66:48: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c: In function ‘color_gray_luminance’:
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:120:5: warning: implicit declaration of function ‘free’ [-Wimplicit-function-declaration]
+  120 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:120:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:120:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:120:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c: In function ‘color_invert’:
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:158:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  158 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:158:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c: In function ‘max_pixel’:
+/home/runner/work/pgi-2025-the_energetic_sonnets/pgi-2025-the_energetic_sonnets/src/features.c:260:12: warning: too many arguments for format [-Wformat-extra-args]
+  260 |     printf("max_pixel (%d,%d):%d, %d\n",max_x,max_y,max_R,max_G,max_B);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gmake[1]: *** [CMakeFiles/Makefile2:87: CMakeFiles/freud.dir/all] Error 2
+gmake: *** [Makefile:136: all] Error 2
+
+The process '/usr/local/bin/cmake' failed with exit code 2
